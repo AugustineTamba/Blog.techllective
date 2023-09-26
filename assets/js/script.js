@@ -103,24 +103,23 @@ function loadMore() {
 
 // post-box
 
-// Get all post-box elements
-  const postBoxes = document.querySelectorAll('.post-box');
+// Get all img elements within the post-box class
+  const imgElements = document.querySelectorAll('.post-box img.post-img');
 
   // Define a function to open the link when the image is clicked
   function openLink(event) {
+    // Get the closest parent post-box element
+    const postBox = event.target.closest('.post-box');
+    
     // Get the link URL from the "href" attribute of the post-title link within the clicked post-box
-    const link = event.currentTarget.querySelector('.post-title').getAttribute('href');
+    const link = postBox.querySelector('.post-title').getAttribute('href');
 
     // Navigate to the link
     window.location.href = link;
   }
 
-  // Add a click event listener to each post-box
-  postBoxes.forEach((postBox) => {
-    // Get the img element inside the current post-box
-    const imgElement = postBox.querySelector('.post-img');
-
-    // Add a click event listener to the img element
+  // Add a click event listener to each img element
+  imgElements.forEach((imgElement) => {
     imgElement.addEventListener('click', openLink);
   });
 
