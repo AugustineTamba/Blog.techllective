@@ -103,20 +103,26 @@ function loadMore() {
 
 // post-box
 
-// Get the img element inside the post-box
-  const imgElement = document.querySelector('.post-box .post-img');
+// Get all post-box elements
+  const postBoxes = document.querySelectorAll('.post-box');
 
   // Define a function to open the link when the image is clicked
-  function openLink() {
-    // Get the link URL from the "href" attribute of the post-title link
-    const link = document.querySelector('.post-box .post-title').getAttribute('href');
+  function openLink(event) {
+    // Get the link URL from the "href" attribute of the post-title link within the clicked post-box
+    const link = event.currentTarget.querySelector('.post-title').getAttribute('href');
 
     // Navigate to the link
     window.location.href = link;
   }
 
-  // Add a click event listener to the img element
-  imgElement.addEventListener('click', openLink);
+  // Add a click event listener to each post-box
+  postBoxes.forEach((postBox) => {
+    // Get the img element inside the current post-box
+    const imgElement = postBox.querySelector('.post-img');
+
+    // Add a click event listener to the img element
+    imgElement.addEventListener('click', openLink);
+  });
 
 // Footer Newsletter 
 function sendMailNewsletter() {
