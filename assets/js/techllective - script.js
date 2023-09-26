@@ -103,30 +103,20 @@ function loadMore() {
 
 // post-box
 
-// Get all elements with class "post-box" or "tech"
-  const elements = document.querySelectorAll('.post-box');
+// Get the img element inside the post-box
+  const imgElement = document.querySelector('.post-box .post-img');
 
-  // Define a function to open the link when clicked
-  function openLink(event) {
-    // Check if the clicked element has the class "post-title" or "post-box"
-    if (
-      event.target.classList.contains('post-title') ||
-      event.target.classList.contains('post-box')
-    ) {
-      // Get the link URL from the "href" attribute of the clicked element
-      const link = event.target.getAttribute('href');
+  // Define a function to open the link when the image is clicked
+  function openLink() {
+    // Get the link URL from the "href" attribute of the post-title link
+    const link = document.querySelector('.post-box .post-title').getAttribute('href');
 
-       // Navigate to the link in the same page
-      window.location.href = link;
-    }
+    // Navigate to the link
+    window.location.href = link;
   }
 
-  // Add a click event listener to each matching element
-  elements.forEach((element) => {
-    element.addEventListener('click', openLink);
-  });
-
-
+  // Add a click event listener to the img element
+  imgElement.addEventListener('click', openLink);
 
 // Footer Newsletter 
 function sendMailNewsletter() {
