@@ -9,31 +9,21 @@
 ##################################################
 
 
-# DirectoryIndex index.php index.html index.htm index2.html
+DirectoryIndex index.php index.html index.htm index2.html
 
-# ErrorDocument 403 http://error.techllective.42web.io/403/
-# ErrorDocument 404 http://error.techllective.42web.io/404/
-# ErrorDocument 500 http://error.techllective.42web.io/500/
-
-# RewriteEngine On
-# # RewriteCond %{THE_REQUEST} /([^.]+).html [NC]
-# # RewriteRule ^ /%1 [NC,L,R]
-# # RewriteCond %{REQUEST_FILENAME} !-f
-# # RewriteRule ^([^\.]+)$ $1.html [NC,L]
-
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteCond %{REQUEST_FILENAME}.html -f
-# RewriteRule ^(.*)$ $1.html
+ErrorDocument 403 https://errors.infinityfree.net/errors/403/
+ErrorDocument 404 https://errors.infinityfree.net/errors/404/
+ErrorDocument 500 https://errors.infinityfree.net/errors/500/
 
 Options +MultiViews
 
 RewriteEngine On
-
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteCond %{THE_REQUEST} /([^.]+).html [NC]
 RewriteRule ^ /%1 [NC,L,R]
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteRule ^([^.]+)$ $1.html [NC,L]
 
+RewriteEngine on 
 RewriteCond %{HTTP_REFERER} !^$ 
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www.)?example.com [NC] 
 RewriteRule .(jpg|jpeg|png|gif)$ – [NC,F,L]
